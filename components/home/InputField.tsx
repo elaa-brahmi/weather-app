@@ -8,13 +8,13 @@ export default function InputField() {
     const fetchWeather = async () => {
         if (!city) return;
         try {
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=YOUR_API_KEY&units=metric`);
+            const apiKey = process.env.API_KEY ;
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
             if (!response.ok) {
                 throw new Error('City not found');
             }
             const data = await response.json();
             console.log(data);
-            // Handle the weather data as needed
         } catch (error) {
             console.error('Error fetching weather data:', error);
         }
@@ -28,7 +28,7 @@ export default function InputField() {
                 value={city}
                 type="text"
                 placeholder="Enter city name ..."
-                className=" h-12 w-full pl-9 bg-white border-none focus:outline-none outline-none text-gray-800 placeholder-gray-500"></Input>
+                className=" h-12 w-full pl-9 bg-white border-none focus:border-none active:border-none focus:outline-none outline-none text-gray-800 placeholder-gray-500"></Input>
                 <div className="ms-5 mt-1 backdrop-blur-md rounded-md  p-1">
                     <Button
                     className="border-none outline-none cursor-pointer text-white/40 hover:text-white/80 transition-colors duration-300"
