@@ -6,7 +6,6 @@ import { Button } from '../ui/button';
 import WeatherCard from './WeatherCard';
 import { cn } from '@/lib/utils';
 export default function InputField() {
-    const [Thecity, setCity] = useState('');
      const initialWeather = {
         city: '',
         temperature: '',
@@ -17,8 +16,12 @@ export default function InputField() {
         windSpeed: '',
     };
     const [Theweather, setWeather] = useState(initialWeather);
+    const [error, setError] = useState<string | null>(null); 
+    const [Thecity, setCity] = useState('');
+
     const fetchWeather = async () => {
         if (!Thecity) return;
+        setError(null); 
         try {
             console.log(Thecity);
             const apiKey = process.env.NEXT_PUBLIC_API_KEY|| '' ;
@@ -38,6 +41,8 @@ export default function InputField() {
                 windSpeed: data.wind.speed,
             });
         } catch (error) {
+            setError('City not found or an error occurred');
+            setWeather(initialWeather);
             console.error('Error fetching weather data:', error);
         }
     }
@@ -62,7 +67,7 @@ export default function InputField() {
         
         </div>
         <div>
-            <WeatherCard weatherProp={Theweather}></WeatherCard>
+            <WeatherCard weatherProp={Theweather} errorProp={error}></WeatherCard>
        
         </div>
     </>

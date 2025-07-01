@@ -1,6 +1,6 @@
 "use client"
 import React, { useState,useEffect } from 'react';
-export default function WeatherCard({weatherProp}:{weatherProp?: any}) {
+export default function WeatherCard({weatherProp,errorProp}:{weatherProp?: any;errorProp?: string | null}) {
     console.log("weatherProp from weather card",weatherProp);
     const [loaded,setLoaded] = useState(false);
     useEffect(() => {
@@ -13,7 +13,12 @@ export default function WeatherCard({weatherProp}:{weatherProp?: any}) {
 
   return (
     <div className="mb-7 mt-7 backdrop-blur-md rounded-xl bg-white/20 p-6 w-full ">
-        {!loaded ? (
+        {errorProp ?(
+            <div className="flex flex-col justify-center items-center p-3 text-white font-bold space-y-3">
+                    <div>{errorProp}</div>
+                </div>
+        ) :
+        !loaded ? (
             <div className="flex flex-col justify-center items-center p-3 text-white/70 space-y-3">
                 <div>Enter a city name above to get started with real-time weather information</div>
                 <div>Try searching for cities like "Tunisia", "New York", or "Tokyo"</div>
