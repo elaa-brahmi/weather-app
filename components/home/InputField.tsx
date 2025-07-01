@@ -4,6 +4,7 @@ import { Input } from '../ui/input';
 import { useState } from 'react';
 import { Button } from '../ui/button';
 import WeatherCard from './WeatherCard';
+import { cn } from '@/lib/utils';
 export default function InputField() {
     const [Thecity, setCity] = useState('');
      const initialWeather = {
@@ -42,7 +43,7 @@ export default function InputField() {
     }
   return (
     <>
-        <div className=" flex mt-7 backdrop-blur-md rounded-xl bg-white/20 p-6 w-full max-w-2xl ">
+        <div className=" flex mt-7 backdrop-blur-md rounded-xl bg-white/20 p-6 w-full  ">
             <div className="relative p-3 flex items-start w-full">
                 <MapPinIcon className="absolute mt-3 ms-2 w-5 h-5 text-gray-500 mr-2 inline" />
                 <Input
@@ -53,7 +54,7 @@ export default function InputField() {
                     className=" h-12 w-full pl-9 bg-white border-none focus:border-none active:border-none focus:outline-none outline-none text-gray-800 placeholder-gray-500"></Input>
                     <div className="ms-5 mt-1 backdrop-blur-md rounded-md  p-1">
                         <Button
-                        className="border-none outline-none cursor-pointer text-white/40 hover:text-white/80 transition-colors duration-300"
+                        className={cn("border-none outline-none cursor-pointer text-white/40 hover:text-white/80 transition-colors duration-300",Thecity? "":"cursor-not-allowed ")}
                         onClick={fetchWeather}  
                         ><Search></Search></Button>
                     </div>

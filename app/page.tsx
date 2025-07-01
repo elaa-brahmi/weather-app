@@ -11,7 +11,7 @@ export default function Home() {
       <h1 className="font-bold md:text-6xl text-2xl text-white ">WeatherNow</h1>
     </div>
     <div className="text-white font-semibold text-lg">Get real-time weather information for any city</div>
-    <div className="mx-4">
+    <div className=" w-full mx-4 max-w-2xl">
     <InputField/>
     </div>
    </div>
