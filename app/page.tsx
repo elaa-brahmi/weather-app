@@ -13,7 +13,7 @@ export default function Home() {
     <div className="text-white font-semibold text-lg">Get real-time weather information for any city</div>
     <div className="mx-4">
     <InputField/>
-    <WeatherCard/></div>
+    </div>
    </div>
   );
 }
