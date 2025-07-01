@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
-export default function WeatherCard() {
+export default function WeatherCard({weatherProp}:{weatherProp?: any}) {
+    console.log("weatherProp from weather card",weatherProp);
 const [loaded,setLoaded] = useState(false);
 
   return (
